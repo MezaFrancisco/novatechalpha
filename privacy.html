@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — NovaTech Alpha</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #080f1f;
+      --bg2:      #0d1628;
+      --border:   rgba(255,255,255,0.07);
+      --text:     #f1f5f9;
+      --muted:    #94a3b8;
+      --blue:     #2563eb;
+      --blue-lt:  #3b82f6;
+      --logo-grad: linear-gradient(135deg, #7b35c1 0%, #e8198b 40%, #ff8c00 70%, #3db8f5 100%);
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(8,15,31,0.94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .header-inner {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .logo-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: var(--logo-grad);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 20px;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .logo-name { font-size: 17px; font-weight: 700; color: var(--text); letter-spacing: -0.3px; }
+    .logo-name span { color: var(--muted); font-weight: 400; font-size: 13px; }
+    nav { display: flex; align-items: center; gap: 28px; }
+    nav a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+    nav a:hover, nav a[aria-current] { color: var(--text); }
+    .btn {
+      display: inline-block;
+      padding: 9px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      background: var(--blue);
+      color: #fff;
+      transition: background 0.2s;
+    }
+    .btn:hover { background: var(--blue-lt); }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+      padding: 56px 24px 48px;
+      text-align: center;
+    }
+    .page-hero .eyebrow {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--blue-lt);
+      margin-bottom: 12px;
+    }
+    .page-hero h1 {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 10px;
+    }
+    .page-hero p { color: var(--muted); font-size: 15px; }
+
+    /* ── CONTENT ── */
+    .content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 64px 24px 80px;
+    }
+    .intro-box {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--blue);
+      border-radius: 0 10px 10px 0;
+      padding: 18px 22px;
+      margin-bottom: 48px;
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .content h2 {
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--text);
+      margin: 44px 0 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    .content p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.8;
+      margin-bottom: 14px;
+    }
+    .content ul, .content ol {
+      margin: 0 0 18px 22px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+    .content li { margin-bottom: 6px; }
+    .content a { color: var(--blue-lt); text-decoration: none; font-weight: 500; }
+    .content a:hover { text-decoration: underline; }
+    .content strong { color: var(--text); font-weight: 600; }
+
+    /* ── FOOTER ── */
+    footer { border-top: 1px solid var(--border); background: var(--bg); }
+    .footer-inner {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 32px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-copy { font-size: 14px; color: var(--muted); }
+    .footer-copy a { color: inherit; text-decoration: none; }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 14px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text); }
+
+    @media (max-width: 600px) {
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+      nav .btn { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <div class="logo-mark">N</div>
+        <div class="logo-name">NovaTech<span> Alpha</span></div>
+      </a>
+      <nav>
+        <a href="privacy.html" aria-current="page">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="mailto:contact@novatechalpha.com" class="btn">Contact Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <span class="eyebrow">Legal</span>
+    <h1>Privacy Policy</h1>
+    <p>Last updated: May 7, 2026</p>
+  </div>
+
+  <!-- CONTENT -->
+  <main class="content">
+
+    <div class="intro-box">
+      This Privacy Policy explains how NovaTech Alpha (&ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;) collects, uses, and protects information when you use our AI-powered SMS automation platform. By using our services, you agree to the practices described here.
+    </div>
+
+    <h2>1. Who We Are</h2>
+    <p>NovaTech Alpha is an AI-powered SMS automation platform designed for local service businesses. We help businesses manage lead conversations, appointment bookings, and customer follow-ups via text message. For questions about this policy, contact us at <a href="mailto:contact@novatechalpha.com">contact@novatechalpha.com</a>.</p>
+
+    <h2>2. Information We Collect</h2>
+    <p><strong>Business Account Information:</strong> When you create an account, we collect your name, business name, email address, phone number, and billing information.</p>
+    <p><strong>Contact Data:</strong> We store the phone numbers and additional details (name, service inquiry, notes) of your customers and leads that interact with your SMS automation.</p>
+    <p><strong>Message Content:</strong> We store inbound and outbound SMS messages processed through our platform in order to power AI responses, display conversation history in your dashboard, and generate follow-ups.</p>
+    <p><strong>Usage Data:</strong> We collect information about how you interact with our platform, including pages visited, features used, login timestamps, and dashboard activity.</p>
+    <p><strong>Device &amp; Technical Data:</strong> IP address, browser type, operating system, and referring URLs when you access our web dashboard.</p>
+    <p><strong>Payment Information:</strong> Billing details are collected and processed by our third-party payment processor. We do not store full card numbers on our servers.</p>
+
+    <h2>3. How We Use Your Information</h2>
+    <ul>
+      <li>To deliver, operate, and improve our SMS automation services</li>
+      <li>To generate AI responses on your behalf to your customers</li>
+      <li>To send automated follow-up messages and appointment reminders as configured</li>
+      <li>To provide you with a dashboard showing conversation history and lead status</li>
+      <li>To process billing and send receipts and invoices</li>
+      <li>To respond to support requests and communicate platform updates</li>
+      <li>To detect, prevent, and address technical issues or policy violations</li>
+      <li>To comply with legal obligations, including A2P 10DLC carrier requirements</li>
+    </ul>
+
+    <h2>4. SMS Messaging &amp; A2P 10DLC</h2>
+    <p>Our platform sends SMS messages on your behalf using registered Application-to-Person (A2P) 10DLC phone numbers. As part of carrier compliance:</p>
+    <ul>
+      <li>All campaigns are registered with The Campaign Registry (TCR)</li>
+      <li>Messages are sent only to contacts who have provided prior express written consent</li>
+      <li>Every message includes opt-out instructions (e.g., &ldquo;Reply STOP to unsubscribe&rdquo;)</li>
+      <li>Opt-out requests are processed immediately and contacts are suppressed from future messages</li>
+      <li>Message frequency and content comply with CTIA and carrier guidelines</li>
+    </ul>
+    <p>You, as the business operator, are responsible for obtaining proper consent from your contacts before using our platform to message them.</p>
+
+    <h2>5. Sharing Your Information</h2>
+    <p>We do not sell your personal data or your customers&rsquo; data. We share information only in the following circumstances:</p>
+    <ul>
+      <li><strong>SMS Carriers &amp; Aggregators:</strong> Message content and phone numbers are transmitted to carriers to deliver text messages.</li>
+      <li><strong>AI Service Providers:</strong> Message content may be processed by AI model providers to generate responses. These providers are contractually bound to data security standards.</li>
+      <li><strong>Payment Processors:</strong> Billing information is shared with our payment processor to handle transactions.</li>
+      <li><strong>Infrastructure Providers:</strong> We use cloud hosting and database providers who process data on our behalf under data processing agreements.</li>
+      <li><strong>Legal Requirements:</strong> We may disclose information if required by law, court order, or to protect the rights and safety of NovaTech Alpha, our users, or the public.</li>
+      <li><strong>Business Transfers:</strong> In the event of a merger, acquisition, or sale of assets, your information may be transferred as part of that transaction.</li>
+    </ul>
+
+    <h2>6. Data Retention</h2>
+    <p>We retain your account information and message history for as long as your account is active and for a reasonable period thereafter for legal, audit, and business purposes. Conversation data is retained for a minimum of 90 days to support platform functionality. You may request deletion of your account and associated data at any time by contacting us.</p>
+    <p>Opt-out records (STOP requests) are retained indefinitely to ensure suppression compliance.</p>
+
+    <h2>7. Data Security</h2>
+    <p>We implement industry-standard security measures including encryption in transit (TLS), encryption at rest, access controls, and regular security reviews. While we take reasonable precautions to protect your data, no system is completely secure. We encourage you to use strong passwords and notify us immediately of any suspected unauthorized access.</p>
+
+    <h2>8. Your Rights</h2>
+    <p>Depending on your location, you may have rights regarding your personal data, including:</p>
+    <ul>
+      <li><strong>Access:</strong> Request a copy of the personal data we hold about you</li>
+      <li><strong>Correction:</strong> Request correction of inaccurate data</li>
+      <li><strong>Deletion:</strong> Request deletion of your account and personal data</li>
+      <li><strong>Portability:</strong> Request a machine-readable export of your data</li>
+      <li><strong>Opt-Out:</strong> Opt out of non-essential communications from us</li>
+    </ul>
+    <p>To exercise any of these rights, email us at <a href="mailto:contact@novatechalpha.com">contact@novatechalpha.com</a>. We will respond within 30 days.</p>
+
+    <h2>9. Cookies &amp; Tracking</h2>
+    <p>Our web dashboard uses essential cookies required for authentication and session management. We may also use analytics tools to understand how the dashboard is used. We do not use advertising cookies or track you across third-party websites.</p>
+
+    <h2>10. Children&rsquo;s Privacy</h2>
+    <p>Our services are intended for businesses and individuals 18 years of age or older. We do not knowingly collect personal information from children under 13. If we become aware that a child has provided personal information, we will delete it promptly.</p>
+
+    <h2>11. Third-Party Links</h2>
+    <p>Our platform may contain links to third-party websites or services. We are not responsible for the privacy practices of those third parties and encourage you to review their privacy policies.</p>
+
+    <h2>12. Changes to This Policy</h2>
+    <p>We may update this Privacy Policy periodically. When we make material changes, we will update the &ldquo;Last updated&rdquo; date at the top of this page and notify active account holders by email. Continued use of our services after changes constitutes acceptance of the updated policy.</p>
+
+    <h2>13. Contact Us</h2>
+    <p>If you have questions, concerns, or requests regarding this Privacy Policy, please contact us:</p>
+    <p><strong>NovaTech Alpha</strong><br />
+    Email: <a href="mailto:contact@novatechalpha.com">contact@novatechalpha.com</a></p>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-copy">&copy; 2026 NovaTech Alpha &mdash; <a href="mailto:contact@novatechalpha.com">contact@novatechalpha.com</a></span>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NovaTech Alpha — AI SMS Automation for Local Service Businesses</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #080f1f;
+      --bg2:      #0d1628;
+      --bg3:      #111f38;
+      --border:   rgba(255,255,255,0.07);
+      --text:     #f1f5f9;
+      --muted:    #94a3b8;
+      --blue:     #2563eb;
+      --blue-lt:  #3b82f6;
+      --blue-bg:  rgba(37,99,235,0.12);
+      /* Logo mark gradient matches actual logo */
+      --logo-grad: linear-gradient(135deg, #7b35c1 0%, #e8198b 40%, #ff8c00 70%, #3db8f5 100%);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(8,15,31,0.94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .header-inner {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .logo-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: var(--logo-grad);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 20px;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .logo-name {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.3px;
+    }
+    .logo-name span { color: var(--muted); font-weight: 400; font-size: 13px; margin-left: 3px; }
+    nav { display: flex; align-items: center; gap: 28px; }
+    nav a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+    nav a:hover { color: var(--text); }
+    .btn {
+      display: inline-block;
+      padding: 9px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      cursor: pointer;
+    }
+    .btn-primary { background: var(--blue); color: #fff; }
+    .btn-primary:hover { background: var(--blue-lt); transform: translateY(-1px); }
+    .btn-ghost {
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text);
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.18); background: rgba(255,255,255,0.04); }
+
+    /* ── HERO ── */
+    .hero {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 96px 24px 88px;
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 100px;
+      background: var(--blue-bg);
+      border: 1px solid rgba(37,99,235,0.35);
+      font-size: 13px;
+      font-weight: 600;
+      color: #93c5fd;
+      margin-bottom: 32px;
+      letter-spacing: 0.2px;
+    }
+    .hero h1 {
+      font-size: clamp(34px, 5.5vw, 54px);
+      font-weight: 800;
+      line-height: 1.12;
+      letter-spacing: -1.5px;
+      margin-bottom: 22px;
+      color: var(--text);
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--blue-lt);
+    }
+    .hero p {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 540px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+    .hero-cta { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg2);
+      padding: 20px 24px;
+    }
+    .trust-inner {
+      max-width: 1040px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+    }
+    .trust-item .check {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: rgba(37,99,235,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: #93c5fd;
+      flex-shrink: 0;
+    }
+
+    /* ── SECTION BASE ── */
+    .section {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+    .section-tag {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--blue-lt);
+      margin-bottom: 12px;
+      display: block;
+    }
+    .section h2 {
+      font-size: clamp(26px, 3.5vw, 34px);
+      font-weight: 800;
+      letter-spacing: -0.7px;
+      margin-bottom: 14px;
+      color: var(--text);
+    }
+    .section > p.lead {
+      color: var(--muted);
+      font-size: 17px;
+      max-width: 520px;
+      margin-bottom: 52px;
+      line-height: 1.7;
+    }
+
+    /* ── FEATURES ── */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
+      gap: 18px;
+    }
+    .feature-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 26px;
+      transition: border-color 0.25s, transform 0.2s;
+    }
+    .feature-card:hover { border-color: rgba(37,99,235,0.4); transform: translateY(-2px); }
+    .feature-icon {
+      font-size: 22px;
+      margin-bottom: 16px;
+      line-height: 1;
+    }
+    .feature-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .feature-card p { font-size: 14px; color: var(--muted); line-height: 1.65; }
+
+    /* ── SOCIAL PROOF / STATS ── */
+    .stats-bg { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0;
+      text-align: center;
+    }
+    .stat-item {
+      padding: 52px 24px;
+      border-right: 1px solid var(--border);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-size: 42px;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -1.5px;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .stat-num span { color: var(--blue-lt); }
+    .stat-label { font-size: 14px; color: var(--muted); line-height: 1.4; }
+
+    /* ── HOW IT WORKS ── */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 36px;
+    }
+    .step { position: relative; }
+    .step-num {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 16px;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .step h3 { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+    .step p { font-size: 14px; color: var(--muted); line-height: 1.65; }
+
+    /* ── WHO IT'S FOR ── */
+    .who-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .who-tag {
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--bg2);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .who-tag:hover { border-color: rgba(37,99,235,0.4); color: var(--text); }
+
+    /* ── CTA ── */
+    .cta-section {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+    .cta-box {
+      background: var(--blue);
+      border-radius: 16px;
+      padding: 60px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-box::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 240px; height: 240px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.07);
+      pointer-events: none;
+    }
+    .cta-box::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: -40px;
+      width: 280px; height: 280px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.05);
+      pointer-events: none;
+    }
+    .cta-box h2 {
+      font-size: clamp(24px, 4vw, 32px);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+      color: #fff;
+      position: relative;
+      z-index: 1;
+    }
+    .cta-box p { color: rgba(255,255,255,0.75); font-size: 16px; margin-bottom: 32px; position: relative; z-index: 1; }
+    .btn-white { background: #fff; color: var(--blue); font-weight: 700; position: relative; z-index: 1; }
+    .btn-white:hover { background: #f1f5f9; }
+    .cta-email {
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+      margin-top: 16px;
+      position: relative;
+      z-index: 1;
+    }
+    .cta-email a { color: rgba(255,255,255,0.9); text-decoration: none; font-weight: 500; }
+    .cta-email a:hover { text-decoration: underline; }
+
+    /* ── FOOTER ── */
+    footer { border-top: 1px solid var(--border); background: var(--bg); }
+    .footer-inner {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 32px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-copy { font-size: 14px; color: var(--muted); }
+    .footer-copy a { color: inherit; text-decoration: none; }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 14px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text); }
+
+    @media (max-width: 680px) {
+      .stat-item { border-right: none; border-bottom: 1px solid var(--border); }
+      .stat-item:last-child { border-bottom: none; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+      nav .btn { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <div class="logo-mark">N</div>
+        <div class="logo-name">NovaTech<span> Alpha</span></div>
+      </a>
+      <nav>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="mailto:contact@novatechalpha.com" class="btn btn-primary">Get Early Access</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-badge">AI-Powered SMS Automation</div>
+    <h1>Stop losing jobs to<br /><em>slow response times.</em></h1>
+    <p>NovaTech Alpha automatically texts every lead the moment they reach out — qualifying, booking, and following up while you're on the job.</p>
+    <div class="hero-cta">
+      <a href="mailto:contact@novatechalpha.com" class="btn btn-primary" style="padding:12px 28px; font-size:15px;">Request Early Access</a>
+      <a href="#how-it-works" class="btn-ghost">See How It Works</a>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-inner">
+      <div class="trust-item"><span class="check">✓</span>No contracts required</div>
+      <div class="trust-item"><span class="check">✓</span>A2P 10DLC compliant</div>
+      <div class="trust-item"><span class="check">✓</span>Works with your existing number</div>
+      <div class="trust-item"><span class="check">✓</span>Set up in under 10 minutes</div>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <section class="section">
+    <span class="section-tag">Features</span>
+    <h2>Everything you need to close more jobs</h2>
+    <p class="lead">Built specifically for trade and home service businesses. No tech skills required.</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>Instant Lead Response</h3>
+        <p>Reply to every inbound inquiry in under 60 seconds — 24 hours a day, 7 days a week. The first business to respond wins the job.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🤖</div>
+        <h3>AI That Sounds Like You</h3>
+        <p>Your AI is trained on your services, prices, and service area. It answers questions and qualifies leads the way you would.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📅</div>
+        <h3>Automatic Booking</h3>
+        <p>Customers can schedule appointments directly through text. No phone tag, no back-and-forth.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔔</div>
+        <h3>Follow-Up Sequences</h3>
+        <p>Automated reminders reduce no-shows and re-engage leads who didn't book the first time.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📱</div>
+        <h3>Manage From Anywhere</h3>
+        <p>See every conversation and lead status from your phone or laptop. Step in and take over any chat with one tap.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🛡️</div>
+        <h3>Carrier Compliant</h3>
+        <p>Fully registered A2P 10DLC messaging. Your business number is protected and messages reach the inbox.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats-bg">
+    <div class="section" style="padding-top: 0; padding-bottom: 0;">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-num">78<span>%</span></div>
+          <div class="stat-label">of customers book with the first business that responds</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">&lt;60<span>s</span></div>
+          <div class="stat-label">average response time with NovaTech Alpha</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">3<span>×</span></div>
+          <div class="stat-label">more booked jobs from the same number of leads</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">24<span>/7</span></div>
+          <div class="stat-label">your AI works nights, weekends, and holidays</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <section class="section" id="how-it-works">
+    <span class="section-tag">How It Works</span>
+    <h2>Up and running in minutes</h2>
+    <p class="lead">No tech skills, no complicated setup. If you can send a text, you can use NovaTech Alpha.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Connect Your Number</h3>
+        <p>Forward your existing business number or get a dedicated line. We handle the carrier registration for you.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Tell Us About Your Business</h3>
+        <p>Enter your services, pricing, and availability. We configure your AI to represent your business accurately.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Go Live</h3>
+        <p>Turn it on and your AI starts handling texts immediately. You get notified the moment a job is booked.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3>Review &amp; Grow</h3>
+        <p>Track leads, conversations, and bookings from your dashboard. Refine anytime as your business evolves.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO IT'S FOR -->
+  <div class="stats-bg">
+    <section class="section">
+      <span class="section-tag">Who It's For</span>
+      <h2>Built for the trades</h2>
+      <p class="lead">If your phone is your office, NovaTech Alpha was built for you.</p>
+      <div class="who-grid">
+        <span class="who-tag">HVAC</span>
+        <span class="who-tag">Roofing</span>
+        <span class="who-tag">Plumbing</span>
+        <span class="who-tag">Electrical</span>
+        <span class="who-tag">Pest Control</span>
+        <span class="who-tag">Landscaping &amp; Lawn Care</span>
+        <span class="who-tag">House Cleaning</span>
+        <span class="who-tag">Painting</span>
+        <span class="who-tag">Fencing</span>
+        <span class="who-tag">Concrete &amp; Masonry</span>
+        <span class="who-tag">Garage Door</span>
+        <span class="who-tag">Handyman Services</span>
+        <span class="who-tag">Pool &amp; Spa</span>
+        <span class="who-tag">Appliance Repair</span>
+        <span class="who-tag">Moving &amp; Junk Removal</span>
+      </div>
+    </section>
+  </div>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-box">
+      <h2>Ready to stop missing leads?</h2>
+      <p>We're onboarding local businesses now. Get early access before your competitors do.</p>
+      <a href="mailto:contact@novatechalpha.com" class="btn btn-white" style="padding:13px 30px; font-size:15px; display:inline-block;">
+        Request Early Access
+      </a>
+      <p class="cta-email">Questions? Email us at <a href="mailto:contact@novatechalpha.com">contact@novatechalpha.com</a></p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-copy">&copy; 2026 NovaTech Alpha &mdash; <a href="mailto:contact@novatechalpha.com">contact@novatechalpha.com</a></span>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

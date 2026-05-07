@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Service — NovaTech Alpha</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #080f1f;
+      --bg2:      #0d1628;
+      --border:   rgba(255,255,255,0.07);
+      --text:     #f1f5f9;
+      --muted:    #94a3b8;
+      --blue:     #2563eb;
+      --blue-lt:  #3b82f6;
+      --logo-grad: linear-gradient(135deg, #7b35c1 0%, #e8198b 40%, #ff8c00 70%, #3db8f5 100%);
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(8,15,31,0.94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .header-inner {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .logo-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: var(--logo-grad);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 20px;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .logo-name { font-size: 17px; font-weight: 700; color: var(--text); letter-spacing: -0.3px; }
+    .logo-name span { color: var(--muted); font-weight: 400; font-size: 13px; }
+    nav { display: flex; align-items: center; gap: 28px; }
+    nav a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+    nav a:hover, nav a[aria-current] { color: var(--text); }
+    .btn {
+      display: inline-block;
+      padding: 9px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      background: var(--blue);
+      color: #fff;
+      transition: background 0.2s;
+    }
+    .btn:hover { background: var(--blue-lt); }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+      padding: 56px 24px 48px;
+      text-align: center;
+    }
+    .page-hero .eyebrow {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--blue-lt);
+      margin-bottom: 12px;
+    }
+    .page-hero h1 {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 10px;
+    }
+    .page-hero p { color: var(--muted); font-size: 15px; }
+
+    /* ── CONTENT ── */
+    .content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 64px 24px 80px;
+    }
+    .intro-box {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--blue);
+      border-radius: 0 10px 10px 0;
+      padding: 18px 22px;
+      margin-bottom: 48px;
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .content h2 {
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--text);
+      margin: 44px 0 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    .content p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.8;
+      margin-bottom: 14px;
+    }
+    .content ul, .content ol {
+      margin: 0 0 18px 22px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+    .content li { margin-bottom: 6px; }
+    .content a { color: var(--blue-lt); text-decoration: none; font-weight: 500; }
+    .content a:hover { text-decoration: underline; }
+    .content strong { color: var(--text); font-weight: 600; }
+
+    /* ── FOOTER ── */
+    footer { border-top: 1px solid var(--border); background: var(--bg); }
+    .footer-inner {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 32px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-copy { font-size: 14px; color: var(--muted); }
+    .footer-copy a { color: inherit; text-decoration: none; }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 14px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text); }
+
+    @media (max-width: 600px) {
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+      nav .btn { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <div class="logo-mark">N</div>
+        <div class="logo-name">NovaTech<span> Alpha</span></div>
+      </a>
+      <nav>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html" aria-current="page">Terms</a>
+        <a href="mailto:contact@novatechalpha.com" class="btn">Contact Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <span class="eyebrow">Legal</span>
+    <h1>Terms of Service</h1>
+    <p>Last updated: May 7, 2026</p>
+  </div>
+
+  <!-- CONTENT -->
+  <main class="content">
+
+    <div class="intro-box">
+      Please read these Terms of Service carefully before using NovaTech Alpha. By accessing or using our platform, you agree to be bound by these terms. If you do not agree, do not use our services.
+    </div>
+
+    <h2>1. Agreement to Terms</h2>
+    <p>These Terms of Service (&ldquo;Terms&rdquo;) constitute a legally binding agreement between you (&ldquo;Customer,&rdquo; &ldquo;you,&rdquo; or &ldquo;your&rdquo;) and NovaTech Alpha (&ldquo;Company,&rdquo; &ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;) governing your access to and use of our AI-powered SMS automation platform, website, and related services (collectively, the &ldquo;Services&rdquo;).</p>
+    <p>By creating an account, clicking &ldquo;I Agree,&rdquo; or using the Services, you represent that you are at least 18 years old and have the authority to enter into this agreement on behalf of yourself or the business you represent.</p>
+
+    <h2>2. Description of Services</h2>
+    <p>NovaTech Alpha provides an AI-powered SMS automation platform that enables local service businesses to:</p>
+    <ul>
+      <li>Automatically respond to inbound SMS inquiries from leads and customers</li>
+      <li>Send outbound SMS messages for appointment confirmations and follow-ups</li>
+      <li>Manage and view SMS conversations through a web dashboard</li>
+      <li>Configure automated messaging workflows and AI response settings</li>
+    </ul>
+    <p>We reserve the right to modify, suspend, or discontinue any aspect of the Services at any time with reasonable notice.</p>
+
+    <h2>3. Account Registration</h2>
+    <p>To use the Services, you must register for an account and provide accurate, current, and complete information. You are responsible for:</p>
+    <ul>
+      <li>Maintaining the confidentiality of your account credentials</li>
+      <li>All activity that occurs under your account</li>
+      <li>Notifying us immediately at <a href="mailto:contact@novatechalpha.com">contact@novatechalpha.com</a> of any unauthorized access</li>
+      <li>Ensuring your account information remains accurate and up to date</li>
+    </ul>
+    <p>We reserve the right to suspend or terminate accounts that provide inaccurate information or violate these Terms.</p>
+
+    <h2>4. SMS Compliance &amp; Acceptable Use</h2>
+    <p>Your use of our SMS features must comply with all applicable laws and regulations, including the Telephone Consumer Protection Act (TCPA), CAN-SPAM Act, CTIA guidelines, and carrier A2P 10DLC requirements. You agree to:</p>
+    <ul>
+      <li><strong>Obtain prior express written consent</strong> from all contacts before sending them marketing or promotional SMS messages</li>
+      <li><strong>Honor opt-out requests immediately</strong> — any contact who replies STOP, QUIT, CANCEL, UNSUBSCRIBE, or END must be suppressed from future messages</li>
+      <li><strong>Include required disclosures</strong> in your initial message (e.g., message frequency, data rates, opt-out instructions)</li>
+      <li><strong>Only message contacts</strong> who have a legitimate, documented relationship with your business</li>
+      <li><strong>Register your SMS campaigns</strong> accurately with The Campaign Registry (TCR) as required for A2P 10DLC</li>
+      <li><strong>Not send messages</strong> during restricted hours as defined by applicable law (generally 8 AM &ndash; 9 PM in the recipient&rsquo;s local time zone)</li>
+    </ul>
+    <p>You are solely responsible for compliance with all applicable laws governing your messaging campaigns. NovaTech Alpha provides the platform; you are the message sender of record.</p>
+
+    <h2>5. Prohibited Conduct</h2>
+    <p>You may not use the Services to send or facilitate:</p>
+    <ul>
+      <li>Spam, unsolicited messages, or messages to contacts without proper consent</li>
+      <li>Phishing, fraud, scams, or deceptive communications</li>
+      <li>Messages containing adult content, hate speech, harassment, or threats</li>
+      <li>Messages promoting illegal products or services</li>
+      <li>Content that violates any applicable law or regulation</li>
+      <li>High-volume blasting that violates carrier throughput limits</li>
+      <li>Messages impersonating another person, business, or entity</li>
+      <li>Content related to cannabis, firearms, gambling, or other SHAFT-restricted categories without prior written approval</li>
+    </ul>
+    <p>Violations may result in immediate account suspension, termination, and reporting to carriers or law enforcement.</p>
+
+    <h2>6. Fees &amp; Payment</h2>
+    <p>Access to the Services requires payment of applicable subscription fees as described on our pricing page or in your order form. By subscribing:</p>
+    <ul>
+      <li>You authorize us to charge your payment method on a recurring basis</li>
+      <li>Fees are due in advance and are non-refundable except as required by law or as explicitly stated in our refund policy</li>
+      <li>We reserve the right to change pricing with 30 days&rsquo; prior notice</li>
+      <li>Accounts with failed payments may be suspended until payment is resolved</li>
+      <li>Applicable taxes are your responsibility</li>
+    </ul>
+
+    <h2>7. Intellectual Property</h2>
+    <p><strong>Our Property:</strong> NovaTech Alpha retains all rights, title, and interest in the Services, including our software, AI models, branding, and platform design. Nothing in these Terms grants you ownership of our intellectual property.</p>
+    <p><strong>Your Content:</strong> You retain ownership of the content you create, including message templates and business information. You grant us a limited license to use your content solely to provide and improve the Services.</p>
+    <p><strong>Feedback:</strong> Any feedback or suggestions you provide may be used by us without obligation to you.</p>
+
+    <h2>8. AI-Generated Content</h2>
+    <p>Our platform uses artificial intelligence to generate SMS responses on your behalf. You acknowledge that:</p>
+    <ul>
+      <li>AI-generated responses may not always be accurate, appropriate, or complete</li>
+      <li>You are responsible for reviewing AI configurations and monitoring outbound messages</li>
+      <li>We do not guarantee that AI responses will meet your specific business requirements in every case</li>
+      <li>You are the sender of record for all messages sent through your account, regardless of whether they were AI-generated</li>
+    </ul>
+
+    <h2>9. Data &amp; Privacy</h2>
+    <p>Your use of the Services is subject to our <a href="privacy.html">Privacy Policy</a>, which is incorporated into these Terms by reference. You represent and warrant that you have the right to provide any contact data you upload to our platform and that your use of that data complies with applicable privacy laws.</p>
+
+    <h2>10. Confidentiality</h2>
+    <p>Each party agrees to keep the other&rsquo;s non-public business information confidential and not to disclose it to third parties without prior written consent, except as required by law or to provide the Services.</p>
+
+    <h2>11. Disclaimers</h2>
+    <p>THE SERVICES ARE PROVIDED &ldquo;AS IS&rdquo; AND &ldquo;AS AVAILABLE&rdquo; WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.</p>
+    <p>We do not warrant that the Services will be uninterrupted, error-free, or free of viruses. We do not guarantee specific results from using the Services, including lead conversion rates or message deliverability.</p>
+
+    <h2>12. Limitation of Liability</h2>
+    <p>TO THE MAXIMUM EXTENT PERMITTED BY LAW, NOVATECH ALPHA SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING LOST PROFITS, LOSS OF DATA, OR BUSINESS INTERRUPTION, ARISING FROM YOUR USE OF OR INABILITY TO USE THE SERVICES, EVEN IF WE HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.</p>
+    <p>OUR TOTAL CUMULATIVE LIABILITY TO YOU FOR ALL CLAIMS ARISING FROM OR RELATED TO THESE TERMS OR THE SERVICES SHALL NOT EXCEED THE AMOUNT YOU PAID TO US IN THE THREE MONTHS PRECEDING THE CLAIM.</p>
+
+    <h2>13. Indemnification</h2>
+    <p>You agree to indemnify, defend, and hold harmless NovaTech Alpha and its officers, directors, employees, and agents from and against any claims, damages, losses, and expenses (including reasonable attorneys&rsquo; fees) arising from: (a) your use of the Services; (b) your violation of these Terms; (c) your violation of any applicable law or third-party rights; or (d) any content you send through the platform.</p>
+
+    <h2>14. Term &amp; Termination</h2>
+    <p>These Terms begin when you create an account and continue until terminated. You may cancel your account at any time by contacting us at <a href="mailto:contact@novatechalpha.com">contact@novatechalpha.com</a>. We may suspend or terminate your account immediately if you violate these Terms or applicable law.</p>
+    <p>Upon termination, your right to use the Services ends. We may retain your data for a period after termination as described in our Privacy Policy. Sections 7, 11, 12, 13, and 16 survive termination.</p>
+
+    <h2>15. Modifications to Terms</h2>
+    <p>We may update these Terms from time to time. We will provide at least 30 days&rsquo; notice of material changes via email or a prominent notice in the dashboard. Your continued use of the Services after the effective date of changes constitutes acceptance of the updated Terms.</p>
+
+    <h2>16. Governing Law &amp; Disputes</h2>
+    <p>These Terms are governed by the laws of the State of Texas, without regard to its conflict of law provisions. Any dispute arising from these Terms or the Services shall first be attempted to be resolved through good-faith negotiation. If unresolved, disputes shall be submitted to binding arbitration in accordance with the American Arbitration Association rules, conducted in English.</p>
+    <p>You waive any right to participate in class action lawsuits or class-wide arbitration.</p>
+
+    <h2>17. General Provisions</h2>
+    <ul>
+      <li><strong>Entire Agreement:</strong> These Terms, together with our Privacy Policy, constitute the entire agreement between you and NovaTech Alpha regarding the Services.</li>
+      <li><strong>Severability:</strong> If any provision is found unenforceable, the remaining provisions remain in full force.</li>
+      <li><strong>No Waiver:</strong> Failure to enforce any provision does not constitute a waiver of our right to enforce it later.</li>
+      <li><strong>Assignment:</strong> You may not assign your rights under these Terms without our prior written consent. We may assign our rights in connection with a merger or acquisition.</li>
+    </ul>
+
+    <h2>18. Contact</h2>
+    <p>For questions about these Terms, please contact us:</p>
+    <p><strong>NovaTech Alpha</strong><br />
+    Email: <a href="mailto:contact@novatechalpha.com">contact@novatechalpha.com</a></p>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-copy">&copy; 2026 NovaTech Alpha &mdash; <a href="mailto:contact@novatechalpha.com">contact@novatechalpha.com</a></span>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
